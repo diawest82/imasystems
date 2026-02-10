@@ -13,9 +13,11 @@ frontend:
       commands:
         - cd website && npm run build
   artifacts:
-    baseDirectory: website/.next
+    baseDirectory: website
     files:
-      - '**/*'
+      - '.next/**/*'
+      - 'public/**/*'
+      - 'package.json'
   cache:
     paths:
       - website/node_modules/**/*
