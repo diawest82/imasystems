@@ -1,3 +1,9 @@
 {
-  "/page": "app/page.js"
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/admin/patents/new/page": "app/admin/patents/new/page.js",
+  "/page": "app/page.js",
+  "/patents/page": "app/patents/page.js"
 }

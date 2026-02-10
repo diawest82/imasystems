@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/patents/layout,_N_T_/patents/page,_N_T_/patents"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/patents/__PAGE__",
+    "/patents",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -1,0 +1,3 @@
+module.exports=[62925,a=>{"use strict";var b=a.i(7997);function c({children:a}){return(0,b.jsxs)("html",{lang:"en",children:[(0,b.jsxs)("head",{children:[(0,b.jsx)("meta",{charSet:"utf-8"}),(0,b.jsx)("meta",{name:"viewport",content:"width=device-width, initial-scale=1"})]}),(0,b.jsx)("body",{children:(0,b.jsx)("div",{id:"root",children:a})})]})}a.s(["default",()=>c,"metadata",0,{title:"IMA Systems Group",description:"Intelligent Systems with Distributed Decision Making"}])}];
+
+//# sourceMappingURL=app_layout_5a7e0b9f.js.map
