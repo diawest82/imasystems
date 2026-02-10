@@ -8,10 +8,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd website && npm ci
+        - npm ci
     build:
       commands:
-        - cd website && npm run build
+        - npm run build
   artifacts:
     baseDirectory: website
     files:
