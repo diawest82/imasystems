@@ -8,10 +8,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install
+        - cd $AMPLIFY_MONOREPO_ROOT/website && npm install
     build:
       commands:
-        - npm run build
+        - cd $AMPLIFY_MONOREPO_ROOT/website && npm run build
   artifacts:
     baseDirectory: website
     files:
