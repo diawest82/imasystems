@@ -6,12 +6,9 @@ backend:
         - echo "No backend build"
 frontend:
   phases:
-    preBuild:
-      commands:
-        - cd website && npm install
     build:
       commands:
-        - cd website && npm run build
+        - bash build.sh
   artifacts:
     baseDirectory: website/out
     files:
