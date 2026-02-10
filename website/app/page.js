@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { auth } from '@/lib/auth';
-import '../styles/globals.css';
 
 export default function Home() {
   const [isAdmin, setIsAdmin] = useState(false);
