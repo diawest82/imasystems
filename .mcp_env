@@ -1,0 +1,48 @@
+# Persona Hub MCP - Environment Configuration
+# Routes all requests through MCP server by default
+
+# Enable MCP routing
+MCP_ENABLED=true
+
+# MCP Server URL (default to localhost:8000)
+MCP_SERVER_URL=http://localhost:8000
+
+# MCP Server process management
+MCP_LOG_FILE=/tmp/mcp_server.log
+MCP_PID_FILE=/tmp/mcp_server.pid
+
+# Default adapter
+DEFAULT_ADAPTER=kubernetes
+
+# Default council for queries
+DEFAULT_COUNCIL=seven_masters
+
+# Timeout for MCP requests (seconds)
+MCP_TIMEOUT=30
+
+# Retry configuration
+MCP_RETRIES=3
+MCP_RETRY_BACKOFF=1.5
+
+# Logging level
+MCP_LOG_LEVEL=INFO
+
+# Cache configuration
+MCP_CACHE_ENABLED=true
+MCP_CACHE_TTL=3600
+
+# Performance tuning
+MCP_MAX_CONNECTIONS=10
+MCP_CONNECTION_POOL_SIZE=5
+
+# Feature flags
+MCP_ENABLE_PARALLEL_QUERIES=true
+MCP_ENABLE_ADAPTIVE_ROUTING=true
+MCP_ENABLE_CIRCUIT_BREAKER=true
+
+# Routing preferences
+ROUTE_SYSTEM_CALLS=true
+ROUTE_QUERIES=true
+ROUTE_PERSONAS=true
+ROUTE_COUNCILS=true
+ROUTE_ADAPTERS=true

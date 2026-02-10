@@ -1,0 +1,67 @@
+# Environment and dependencies
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive files and credentials
+.credentials/
+*.key
+*.pem
+*.p8
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+/tmp/
+
+# Node modules (if using node-based tools)
+node_modules/
+npm-debug.log
+
+# Build outputs
+/build/
+/dist/
+/.next/
+/out/
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Proprietary/Internal Code (not for public repos)
+/backend/
+/MCP_Orchestration_Hub/
+*.db
+*.sqlite
+app.db
+
+# Local development files
+*.py
+*.sh
+!setup_project.sh
+!start_website.sh
+!start_mcp_server.sh
+!check_setup.sh
+!verify_mcp_organization.sh
+
+# Local development
+local.settings.json

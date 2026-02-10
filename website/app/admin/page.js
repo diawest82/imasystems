@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 import { auth } from '@/lib/auth';
-import '../styles/globals.css';
+import '@/styles/globals.css';
 
 export default function AdminDashboard() {
   const router = useRouter();
