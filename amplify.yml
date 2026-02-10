@@ -5,18 +5,21 @@ backend:
       commands:
         - echo "No backend build"
 frontend:
-  appRoot: website
   phases:
     preBuild:
       commands:
-        - npm install
+        - |
+          cd website
+          npm install
     build:
       commands:
-        - npm run build
+        - |
+          cd website
+          npm run build
   artifacts:
-    baseDirectory: .next
+    baseDirectory: website/.next
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - website/node_modules/**/*
