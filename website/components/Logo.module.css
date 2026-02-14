@@ -1,0 +1,268 @@
+/**
+ * Logo Component Styling - Minimal Quantum Design
+ * Consistent with website color scheme
+ */
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.logoWrapper:hover {
+  filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.5));
+}
+
+/* Variants */
+.logoWrapper.icon {
+  justify-content: center;
+}
+
+.logoWrapper.text {
+  gap: 8px;
+}
+
+/* Size variants */
+.logoWrapper.small {
+  gap: 6px;
+}
+
+.logoWrapper.normal {
+  gap: 12px;
+}
+
+.logoWrapper.large {
+  gap: 16px;
+}
+
+/* Logo Icon Container */
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.logoIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Quantum nodes with subtle pulse */
+.nodeI,
+.nodeM,
+.nodeA {
+  animation: nodePulse 3s ease-in-out infinite;
+}
+
+.nodeI {
+  animation-delay: 0s;
+}
+
+.nodeM {
+  animation-delay: 0.5s;
+}
+
+.nodeA {
+  animation-delay: 1s;
+}
+
+@keyframes nodePulse {
+  0%, 100% {
+    r: 3px;
+    opacity: 0.8;
+  }
+  50% {
+    r: 4px;
+    opacity: 1;
+  }
+}
+
+/* Pulse border on center core */
+.pulseBorder {
+  animation: borderPulse 3s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% {
+    stroke-width: 1px;
+    opacity: 0.2;
+    r: 5px;
+  }
+  50% {
+    stroke-width: 1.5px;
+    opacity: 0.4;
+    r: 5.5px;
+  }
+}
+
+/* Connection line animations */
+.connectorTop,
+.connectorBL,
+.connectorBR {
+  animation: connectorFlow 3s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+.connectorTop {
+  animation-delay: 0s;
+}
+
+.connectorBL {
+  animation-delay: 0.5s;
+}
+
+.connectorBR {
+  animation-delay: 1s;
+}
+
+@keyframes connectorFlow {
+  0%, 100% {
+    opacity: 0.3;
+    stroke-width: 1px;
+  }
+  50% {
+    opacity: 0.7;
+    stroke-width: 1.5px;
+  }
+}
+
+/* Subtle orbital ring */
+.orbit {
+  animation: orbitalSpin 10s linear infinite;
+}
+
+@keyframes orbitalSpin {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+/* Logo Text */
+.logoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  line-height: 1.1;
+}
+
+/* Main text (IMA SYSTEMS) */
+.mainText {
+  display: flex;
+  align-items: baseline;
+  gap: 0px;
+  font-family: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  font-size: 18px;
+}
+
+.ima {
+  color: #00d9ff;
+  font-size: 1em;
+  text-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+  animation: imaGlow 2s ease-in-out infinite;
+  transition: text-shadow 0.3s ease;
+}
+
+.systems {
+  color: #fafbf8;
+  font-size: 0.95em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-left: 4px;
+}
+
+@keyframes imaGlow {
+  0%, 100% {
+    text-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.6);
+  }
+}
+
+.logoWrapper:hover .ima {
+  text-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+}
+
+/* Responsive sizing */
+@media (max-width: 768px) {
+  .logoWrapper {
+    gap: 8px;
+  }
+
+  .mainText {
+    font-size: 16px;
+  }
+
+  .ima {
+    font-size: 0.95em;
+  }
+
+  .systems {
+    font-size: 0.9em;
+  }
+}
+
+/* Small variant */
+.logoWrapper.small .mainText {
+  font-size: 12px;
+}
+
+.logoWrapper.small .ima {
+  font-size: 0.9em;
+}
+
+.logoWrapper.small .systems {
+  font-size: 0.85em;
+}
+
+/* Large variant */
+.logoWrapper.large .mainText {
+  font-size: 24px;
+}
+
+.logoWrapper.large .ima {
+  font-size: 1.1em;
+}
+
+.logoWrapper.large .systems {
+  font-size: 1em;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .nodeI,
+  .nodeM,
+  .nodeA,
+  .pulseBorder,
+  .connectorTop,
+  .connectorBL,
+  .connectorBR,
+  .orbit,
+  .ima {
+    animation: none;
+  }
+
+  .logoWrapper:hover {
+    filter: none;
+  }
+
+  .logoWrapper:hover .ima {
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+  }
+}
