@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Logo from '@/components/Logo.jsx';
-import { auth } from '@/lib/auth';
+import Logo from '../components/Logo';
+import { auth } from '../lib/auth';
 
 export default function Home() {
   const [email, setEmail] = useState('');
