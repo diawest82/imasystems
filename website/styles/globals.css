@@ -412,6 +412,24 @@ label {
   margin-bottom: var(--spacing-sm);
 }
 
+.admin-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-md);
+}
+
+.admin-sidebar-item a {
+  transition: all var(--transition-base);
+}
+
+.admin-sidebar-item a:hover {
+  background: rgba(0, 229, 255, 0.08);
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px rgba(0, 229, 255, 0.2);
+}
+
 /* Login Page */
 .login-container {
   display: flex;
@@ -689,5 +707,161 @@ tr:hover {
 
   .nav {
     font-size: var(--font-size-sm);
+  }
+}
+/* =============================================================================
+   INTERACTIVE MICRO-INTERACTIONS & ANIMATIONS
+   Enhanced user experience with subtle transitions
+   ============================================================================= */
+
+/* Button & Link Interactions */
+button,
+.btn-admin,
+a[role="button"],
+.btn-primary,
+.btn-secondary {
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover,
+.btn-admin:hover,
+a[role="button"]:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 229, 255, 0.2);
+}
+
+button:active,
+.btn-admin:active,
+a[role="button"]:active,
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.15);
+}
+
+/* Card Hover Effects */
+.patent-card,
+.card,
+.feature-card,
+.section-card {
+  transition: all var(--transition-base);
+  transform: translateZ(0);
+}
+
+.patent-card:hover,
+.card:hover,
+.feature-card:hover,
+.section-card:hover {
+  transform: translateY(-8px) translateZ(0);
+  box-shadow: 0 16px 40px rgba(0, 229, 255, 0.1);
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+/* Link Hover Effects */
+a:not(.nav-active):not([role="button"]) {
+  transition: color var(--transition-base), text-decoration var(--transition-base);
+}
+
+a:not(.nav-active):not([role="button"]):hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* Form Input Interactions */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.1);
+  transition: all var(--transition-base);
+}
+
+input::placeholder,
+textarea::placeholder {
+  transition: color var(--transition-base);
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: transparent;
+}
+
+/* Smooth Page Transitions */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: pageEnter 0.4s ease-out;
+}
+
+/* Section Reveal Animation */
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: sectionReveal 0.5s ease-out backwards;
+}
+
+section:nth-child(1) {
+  animation-delay: 0s;
+}
+
+section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+section:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

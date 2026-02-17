@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import QuantumSafeIndicator from '@/components/QuantumSafeIndicator.jsx';
 import { api } from '@/lib/api';
 import { auth } from '@/lib/auth';
 
@@ -42,6 +43,9 @@ export default function NewPatent() {
     <main className="container">
       <div className="admin-container">
         <h2>Add New Patent / Demonstration</h2>
+        <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+          <QuantumSafeIndicator label="Quantum-Safe Submission" />
+        </div>
         {error && <div className="alert alert-error">{error}</div>}
         
         <form onSubmit={handleSubmit}>

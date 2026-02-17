@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import QuantumSafeIndicator from '@/components/QuantumSafeIndicator.jsx';
 import { api } from '@/lib/api';
 import { auth } from '@/lib/auth';
 
@@ -89,6 +90,10 @@ export default function AdminDashboard() {
         <button onClick={handleLogout} className="btn btn-secondary">
           Logout
         </button>
+      </div>
+
+      <div style={{ marginBottom: 'var(--spacing-xl)' }}>
+        <QuantumSafeIndicator label="Quantum-Safe Admin Workspace" />
       </div>
 
       <div className="admin-content">
