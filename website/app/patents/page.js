@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import QuantumSafeIndicator from '../../components/QuantumSafeIndicator.jsx';
+import PatentVisualization from '../../components/PatentVisualization.jsx';
 import '../../styles/globals.css';
 
 export default function PatentsPage() {
@@ -74,6 +76,18 @@ export default function PatentsPage() {
           }}
         />
       </div>
+
+      {/* Quantum-Safe Indicator */}
+      <div style={{ marginBottom: 'var(--spacing-xl)' }}>
+        <QuantumSafeIndicator label="Quantum-Safe Patent Database" />
+      </div>
+
+      {/* Patent Visualization */}
+      {filteredPatents.length > 0 && (
+        <section className="visualization-section" style={{ marginBottom: 'var(--spacing-3xl)' }}>
+          <PatentVisualization patents={filteredPatents} />
+        </section>
+      )}
 
       {/* Patents Section */}
       <section className="patents-section">

@@ -94,6 +94,7 @@ self.__SERVER_FILES_MANIFEST={
     "compiler": {},
     "expireTime": 31536000,
     "staticPageGenerationTimeout": 60,
+    "output": "export",
     "modularizeImports": {
       "@mui/icons-material": {
         "transform": "@mui/icons-material/{{member}}"
@@ -102,7 +103,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/diawest/projects/imasystems/website",
+    "outputFileTracingRoot": "/Users/diawest/projects/imasystems",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -295,12 +296,12 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.js",
     "turbopack": {
-      "root": "/Users/diawest/projects/imasystems/website"
+      "root": "/Users/diawest/projects/imasystems"
     },
     "distDirRoot": ".next"
   },
   "appDir": "/Users/diawest/projects/imasystems/website",
-  "relativeAppDir": "",
+  "relativeAppDir": "website",
   "files": [
     ".next/routes-manifest.json",
     ".next/server/pages-manifest.json",

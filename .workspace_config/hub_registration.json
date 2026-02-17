@@ -1,0 +1,13 @@
+{
+  "workspace_name": "IMA_SYSTEMS",
+  "workspace_root": "/Users/diawest/projects/imasystems",
+  "port": 8002,
+  "components": [
+    "ima_core",
+    "consciousness_practice",
+    "paranormal_integration",
+    "mcp_orchestration",
+    "patent_integration"
+  ],
+  "timestamp": "2026-02-13T15:12:16.521564"
+}

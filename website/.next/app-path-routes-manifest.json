@@ -1,9 +1,11 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
   "/admin/login/page": "/admin/login",
   "/admin/page": "/admin",
   "/admin/patents/new/page": "/admin/patents/new",
+  "/contact/page": "/contact",
   "/page": "/",
   "/patents/page": "/patents"
 }

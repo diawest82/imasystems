@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import QuantumSafeIndicator from '@/components/QuantumSafeIndicator.jsx';
 import { api } from '@/lib/api';
 import { auth } from '@/lib/auth';
 
@@ -42,6 +43,9 @@ export default function AdminLogin() {
             <p style={{ color: 'var(--gray)', fontSize: '0.95rem' }}>
               Admin Portal
             </p>
+            <div style={{ marginTop: 'var(--spacing-lg)', display: 'flex', justifyContent: 'center' }}>
+              <QuantumSafeIndicator label="Quantum-Safe Login" />
+            </div>
           </div>
 
           {/* Error Alert */}

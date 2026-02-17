@@ -1,21 +1,25 @@
 #!/usr/bin/env python3
 """
-IMA Systems - Create Admin User Script (Direct SQLite)
-Creates a new admin user directly in the database without external dependencies
+IMA Systems - Create Admin User Script
+Creates a new admin user directly in the database with proper bcrypt password hashing
 """
 
 import sys
 import sqlite3
-import hashlib
 import secrets
 from pathlib import Path
+from bcrypt import hashpw, gensalt
 
 def hash_password(password):
-    """Hash password using bcrypt-compatible algorithm (simplified)"""
-    # For simplicity, using PBKDF2
-    salt = secrets.token_hex(16)
-    key = hashlib.pbkdf2_hmac('sha256', password.encode(), salt.encode(), 100000)
-    return f"$2b$12${''.join(format(x, '02x') for x in key)}"
+    """Hash password using bcrypt directly"""
+    # bcrypt has a 72-byte limit for passwords
+    password_bytes = password.encode('utf-8')
+    if len(password_bytes) > 72:
+        password_bytes = password_bytes[:72]
+    # Generate bcrypt hash with salt (12 rounds)
+    salt = gensalt(rounds=12)
+    hashed = hashpw(password_bytes, salt)
+    return hashed.decode('utf-8')
 
 def create_admin_user(db_path, username, email, password):
     """Create a new admin user directly in SQLite database"""
@@ -25,48 +29,36 @@ def create_admin_user(db_path, username, email, password):
     cursor = conn.cursor()
     
     try:
-        # Create tables if they don't exist
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS admin_users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                username TEXT UNIQUE NOT NULL,
-                email TEXT UNIQUE NOT NULL,
-                hashed_password TEXT NOT NULL,
-                is_active BOOLEAN DEFAULT 1,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                last_login TIMESTAMP
-            )
-        ''')
-        
-        # Check if user exists
-        cursor.execute('SELECT id FROM admin_users WHERE username = ?', (username,))
+        # Check if user already exists
+        cursor.execute("SELECT username FROM admin_users WHERE username = ?", (username,))
         if cursor.fetchone():
-            print(f"❌ Error: User '{username}' already exists!")
+            print(f"❌ User '{username}' already exists")
             return False
         
-        # Hash password (using a simplified algorithm for local dev)
-        # In production, use proper bcrypt
-        hashed = hashlib.sha256((password + secrets.token_hex(8)).encode()).hexdigest()
+        # Hash the password
+        hashed_password = hash_password(password)
         
-        # Insert user
-        cursor.execute('''
-            INSERT INTO admin_users (username, email, hashed_password, is_active)
-            VALUES (?, ?, ?, 1)
-        ''', (username, email, hashed))
+        # Insert new user
+        cursor.execute("""
+            INSERT INTO admin_users (username, email, hashed_password, is_active, created_at)
+            VALUES (?, ?, ?, 1, datetime('now'))
+        """, (username, email, hashed_password))
         
         conn.commit()
         
-        print(f"✅ Admin user created successfully!")
+        print("════════════════════════════════════════════════════════════════")
+        print("  🔐 IMA Systems Admin User Created Successfully!")
+        print("════════════════════════════════════════════════════════════════")
+        print(f"\n✅ User Details:")
         print(f"   Username: {username}")
         print(f"   Email: {email}")
+        print(f"   Password: ••••••• (bcrypt hashed)")
         print(f"   Status: Active")
-        print()
-        print("   You can now login at: https://imasystems.ai/admin/login")
+        print(f"\n📝 Note: Login at https://imasystems.ai/admin/login")
+        print(f"   This user can now access the admin dashboard.\n")
+        
         return True
         
-    except sqlite3.IntegrityError as e:
-        print(f"❌ Error: {e}")
-        return False
     except Exception as e:
         print(f"❌ Error creating user: {e}")
         return False
@@ -74,57 +66,43 @@ def create_admin_user(db_path, username, email, password):
         conn.close()
 
 def main():
-    """Main function"""
+    """Main entry point"""
+    if len(sys.argv) != 4:
+        print("Usage: python3 create_admin_user.py <username> <email> <password>")
+        print("Example: python3 create_admin_user.py diawest diawest@imasystems.ai MyPassword123")
+        sys.exit(1)
+    
+    username = sys.argv[1]
+    email = sys.argv[2]
+    password = sys.argv[3]
+    
     print("════════════════════════════════════════════════════════════════")
     print("  🔐 IMA Systems Admin User Creation")
-    print("════════════════════════════════════════════════════════════════")
-    print()
+    print("════════════════════════════════════════════════════════════════\n")
+    print(f"Creating user '{username}'...\n")
     
-    db_path = Path(__file__).parent / "backend" / "app.db"
+    # Database path - look for it in backend app
+    db_candidates = [
+        Path("backend/app.db"),
+        Path("app.db"),
+        Path("backend/app/admin.db"),
+        Path("./admin.db"),
+        Path("~/admin.db").expanduser(),
+    ]
     
-    if len(sys.argv) > 1:
-        # Command line arguments
-        username = sys.argv[1]
-        email = sys.argv[2] if len(sys.argv) > 2 else f"{username}@imasystems.ai"
-        password = sys.argv[3] if len(sys.argv) > 3 else None
-    else:
-        # Interactive mode
-        import getpass
-        
-        print("Enter admin user details:")
-        print()
-        username = input("Username: ").strip()
-        if not username:
-            print("❌ Username cannot be empty")
-            return False
-        
-        email = input(f"Email [{username}@imasystems.ai]: ").strip()
-        if not email:
-            email = f"{username}@imasystems.ai"
-        
-        while True:
-            password = getpass.getpass("Password: ")
-            if not password:
-                print("❌ Password cannot be empty")
-                continue
-            
-            if len(password) < 8:
-                print("❌ Password must be at least 8 characters")
-                continue
-            
-            confirm = getpass.getpass("Confirm password: ")
-            if password != confirm:
-                print("❌ Passwords do not match")
-                continue
-            
+    db_path = None
+    for candidate in db_candidates:
+        if candidate.exists():
+            db_path = candidate
             break
     
-    print()
-    print("Creating user...")
-    print()
+    if not db_path:
+        print("❌ Error: Could not find admin.db database")
+        print(f"   Searched: {[str(p) for p in db_candidates]}")
+        sys.exit(1)
     
-    return create_admin_user(str(db_path), username, email, password)
+    success = create_admin_user(str(db_path), username, email, password)
+    sys.exit(0 if success else 1)
 
 if __name__ == "__main__":
-    success = main()
-    sys.exit(0 if success else 1)
+    main()
