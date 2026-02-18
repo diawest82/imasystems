@@ -25,7 +25,9 @@ export default function AdminLogin() {
       auth.setUser({ username: response.data.username });
       router.push('/admin');
     } catch (err) {
-      setError(err.response?.data?.detail || 'Invalid username or password');
+      console.error('Login error:', err);
+      const errorMessage = err.response?.data?.detail || err.message || 'Invalid username or password';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

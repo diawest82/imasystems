@@ -1,0 +1,81 @@
+/* [project]/website/components/QuantumSafeIndicator.module.css [app-client] (css) */
+.QuantumSafeIndicator-module__HiUurG__indicator {
+  margin: 8px 0;
+  animation: .4s ease-out QuantumSafeIndicator-module__HiUurG__fadeInScale;
+  display: inline-block;
+}
+
+@keyframes QuantumSafeIndicator-module__HiUurG__fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.QuantumSafeIndicator-module__HiUurG__badge {
+  color: var(--color-cyan-bright);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  cursor: default;
+  background: linear-gradient(135deg, #00e5ff1a, #0099dd0d);
+  border: 1px solid #00e5ff4d;
+  border-radius: 8px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
+  display: inline-flex;
+}
+
+.QuantumSafeIndicator-module__HiUurG__badge:hover {
+  background: linear-gradient(135deg, #00e5ff26, #0099dd1a);
+  border-color: #00e5ff80;
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px #00e5ff26;
+}
+
+.QuantumSafeIndicator-module__HiUurG__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  animation: 2s ease-in-out infinite QuantumSafeIndicator-module__HiUurG__pulse;
+}
+
+@keyframes QuantumSafeIndicator-module__HiUurG__pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .6;
+  }
+}
+
+.QuantumSafeIndicator-module__HiUurG__text {
+  letter-spacing: .3px;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .QuantumSafeIndicator-module__HiUurG__indicator {
+    animation: none;
+  }
+
+  .QuantumSafeIndicator-module__HiUurG__badge {
+    transition: none;
+  }
+
+  .QuantumSafeIndicator-module__HiUurG__icon {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/*# sourceMappingURL=website_components_QuantumSafeIndicator_module_dfbfffc2.css.map*/
