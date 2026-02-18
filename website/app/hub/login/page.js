@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import '../styles/globals.css';
-import QuantumSafeIndicator from '../components/QuantumSafeIndicator.jsx';
+import '../../../styles/globals.css';
+import QuantumSafeIndicator from '../../../components/QuantumSafeIndicator.jsx';
 
 export default function HubLogin() {
   const router = useRouter();
