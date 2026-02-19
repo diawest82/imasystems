@@ -71,6 +71,18 @@
       "namedRegex": "^/contact(?:/)?$"
     },
     {
+      "page": "/hub",
+      "regex": "^/hub(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hub(?:/)?$"
+    },
+    {
+      "page": "/hub/login",
+      "regex": "^/hub/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hub/login(?:/)?$"
+    },
+    {
       "page": "/patents",
       "regex": "^/patents(?:/)?$",
       "routeKeys": {},

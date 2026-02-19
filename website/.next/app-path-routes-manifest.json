@@ -6,6 +6,8 @@
   "/admin/page": "/admin",
   "/admin/patents/new/page": "/admin/patents/new",
   "/contact/page": "/contact",
+  "/hub/login/page": "/hub/login",
+  "/hub/page": "/hub",
   "/page": "/",
   "/patents/page": "/patents"
 }

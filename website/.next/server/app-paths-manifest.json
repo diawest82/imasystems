@@ -6,6 +6,8 @@
   "/admin/page": "app/admin/page.js",
   "/admin/patents/new/page": "app/admin/patents/new/page.js",
   "/contact/page": "app/contact/page.js",
+  "/hub/login/page": "app/hub/login/page.js",
+  "/hub/page": "app/hub/page.js",
   "/page": "app/page.js",
   "/patents/page": "app/patents/page.js"
 }
