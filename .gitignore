@@ -66,13 +66,5 @@ app.db
 # Local development
 local.settings.json
 
-IMA
-IMA Business/Users/diawest/projects/imasystems/.venv/bin/aws configure
-# Enter:
-# AWS Access Key ID: [paste from above]
-# AWS Secret Access Key: [paste from above]  
-# Default region: us-east-1
-# Default output format: json
-
-IMA Business 
-LLM_HUB_ROUTING*.md
+# Documentation files - keep locally only
+*.md
