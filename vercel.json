@@ -1,8 +1,7 @@
 {
-  "buildCommand": "cd website && npm run build",
-  "installCommand": "cd website && npm install",
-  "outputDirectory": "website/.next",
-  "env": {
-    "NEXT_PUBLIC_API_URL": "@next_public_api_url"
+  "projects": {
+    "default": {
+      "path": "website"
+    }
   }
 }
